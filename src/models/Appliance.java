@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Appliance extends Product<Integer> {
@@ -18,7 +19,12 @@ public class Appliance extends Product<Integer> {
 
     @Override
     public double calculateDiscount(Date dateOfPurchase) {
-        if (getPrice() > 999.00) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(dateOfPurchase);
+        if (
+                getPrice() > 999.00
+                        && (c.get(Calendar.DAY_OF_WEEK) == 1 || (c.get(Calendar.DAY_OF_WEEK) == 7))
+        ) {
             setDiscount(0.05);
         } else {
             setDiscount(1);
@@ -30,7 +36,7 @@ public class Appliance extends Product<Integer> {
     public void print(Integer quantity, Date dateOfPurchase) {
         double discount = calculateDiscount(dateOfPurchase);
         double priceWithoutDiscount = quantity * getPrice();
-        double priceWithDiscount = priceWithoutDiscount*discount;
+        double priceWithDiscount = priceWithoutDiscount * discount;
 
         String nameBrandModel = String.format(NAME_BRAND_MODEL_SECTION, getName(), getBrand(), getModel());
         System.out.println(nameBrandModel);
@@ -39,7 +45,7 @@ public class Appliance extends Product<Integer> {
         System.out.println(quantityPricePriceWithoutDiscount);
 
         if (discount != 1.0) {
-            String discountPriceWithDiscount = String.format(DISCOUNT_SECTION, getDiscount()*100, priceWithDiscount);
+            String discountPriceWithDiscount = String.format(DISCOUNT_SECTION, getDiscount() * 100, priceWithDiscount);
             System.out.println(discountPriceWithDiscount);
         }
 

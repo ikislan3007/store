@@ -21,7 +21,7 @@ public class Clothes extends Product<Integer> {
     public double calculateDiscount(Date dateOfPurchase) {
         Calendar c = Calendar.getInstance();
         c.setTime(dateOfPurchase);
-        if (c.get(Calendar.DAY_OF_WEEK) != 5 || c.get(Calendar.DAY_OF_WEEK) != 6) {
+        if (c.get(Calendar.DAY_OF_WEEK) != 1 && c.get(Calendar.DAY_OF_WEEK) != 7) {
             setDiscount(0.1);
         } else {
             setDiscount(1);

@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] argc) throws ParseException {
 
-        Date expirationProductsDate = new SimpleDateFormat(DATE_FORMAT).parse("2022-01-22");
+        Date expirationProductsDate = new SimpleDateFormat(DATE_FORMAT).parse("2022-01-25");
+        Date weekendPurchaseDate = new SimpleDateFormat(DATE_FORMAT).parse("2022-01-22");
         Date productionDate = new SimpleDateFormat(DATE_FORMAT).parse("2020-11-14");
 
         Appliance laptop = new Appliance("Macbook Air M1", "Apple", 1000, "Air", productionDate);
@@ -24,7 +25,7 @@ public class Main {
         cart.addCartItem(new CartItem(cloth, 3));
 
         Cashier cashier = new Cashier(cart);
-        cashier.printReceipt(new Date());
+        cashier.printReceipt(weekendPurchaseDate);
 
     }
 }
