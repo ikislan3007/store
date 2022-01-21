@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] argc) throws ParseException {
 
-        Date expirationProductsDate = new SimpleDateFormat(DATE_FORMAT).parse("2022-01-25");
+        Date expirationProductsDate = new SimpleDateFormat(DATE_FORMAT).parse("2022-01-28");
         Date weekendPurchaseDate = new SimpleDateFormat(DATE_FORMAT).parse("2022-01-22");
         Date productionDate = new SimpleDateFormat(DATE_FORMAT).parse("2020-11-14");
 

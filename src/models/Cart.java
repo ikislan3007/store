@@ -33,7 +33,10 @@ public class Cart {
             double quantity = Double.parseDouble(cartItem.getQuantity().toString());
             double productPrice = cartItem.getProduct().getPrice() * quantity;
             subTotal += productPrice;
-            totalDiscount += productPrice - (productPrice * cartItem.getProduct().getDiscount());
+            if (cartItem.getProduct().getDiscount() != 1.00) {
+                totalDiscount += productPrice * cartItem.getProduct().getDiscount();
+            }
+
         }
 
         System.out.println(DELIMITER);
